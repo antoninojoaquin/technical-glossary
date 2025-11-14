@@ -62,7 +62,7 @@ body {
 .header h1 {
   font-size: clamp(1.8rem, 3vw, 2.4rem);
   font-weight: 600;
-  color: rgb(72, 125, 240);
+  color: rgb(104, 150, 250);
   letter-spacing: 0.03em;
 }
 
@@ -213,7 +213,7 @@ body {
 
 .filter-chip.active {
   color: #f9fafb;
-  border-color: rgb(72, 125, 240);
+  border-color: rgb(104, 150, 250);
 }
 
 #searchInput {
