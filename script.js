@@ -68,11 +68,14 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function renderList(items) {
-    listEl.innerHTML = "";
+  listEl.innerHTML = "";
 
-    items.forEach((item) => {
-      const card = document.createElement("article");
-      card.className = "card";
+  items.forEach((item, index) => {
+    const card = document.createElement("article");
+    card.className = "card card-enter";
+
+    // pequeño delay para efecto en cascada
+    card.style.animationDelay = `${index * 40}ms`;
 
       const header = document.createElement("div");
       header.className = "card-header";

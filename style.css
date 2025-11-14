@@ -34,10 +34,22 @@ body {
   padding: 1.5rem;
 }
 
+@keyframes appFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .app {
   width: 100%;
   max-width: 1100px;
   margin: 0 auto;
+  animation: appFadeIn 0.5s ease-out;
 }
 
 /* Header */
@@ -296,6 +308,22 @@ body {
   align-items: flex-start;
   gap: 0.4rem;
 }
+
+@keyframes cardEnter {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.card-enter {
+  animation: cardEnter 0.32s ease-out both;
+}
+
 
 .term-block {
   max-width: 75%;
