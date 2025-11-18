@@ -11,7 +11,7 @@ Deploy: 👉 https://technical-glossary.vercel.app/
 
 ## ⭐ Features
 
-- 🔤 **Más de 60 términos técnicos** (Web, Hardware, Seguridad, Programación, etc.)
+- 🔤 **Más de 70 términos técnicos** (Web, Hardware, Seguridad, Programación, etc.)
 - 🎧 **Pronunciación real en inglés** (Web Speech API)
 - 🔎 **Buscador en tiempo real**
 - 🏷️ **Filtros por categoría**
