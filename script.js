@@ -58,18 +58,18 @@ document.addEventListener("DOMContentLoaded", () => {
   function applyFilters() {
     const q = normalize(currentSearch.trim());
 
-    let termMatches = [];
-    let translationMatches = [];
-    let definitionMatches = [];
-
-    filteredItems = glossary.filter((item) => {
-      const categoryMatch =
-        currentCategory === "all" || item.category === currentCategory;
-      return categoryMatch;
+    const categoryFiltered = glossary.filter((item) => {
+      return currentCategory === "all" || item.category === currentCategory;
     });
 
-    if (q) {
-      filteredItems.forEach((item) => {
+    if (!q) {
+      filteredItems = categoryFiltered;
+    } else {
+      const termMatches = [];
+      const translationMatches = [];
+      const definitionMatches = [];
+
+      categoryFiltered.forEach((item) => {
         const term = normalize(item.term || "");
         const translation = normalize(item.translation || "");
         const definition = normalize(item.definition || "");
@@ -86,8 +86,11 @@ document.addEventListener("DOMContentLoaded", () => {
       filteredItems = [...termMatches, ...translationMatches, ...definitionMatches];
     }
 
-    renderList(filteredItems);
+    currentPage = 1;
+    renderList(paginate(filteredItems));
+    renderPagination(filteredItems.length);
   }
+
 
   function renderList(items) {
   listEl.innerHTML = "";
