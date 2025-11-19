@@ -58,28 +58,35 @@ document.addEventListener("DOMContentLoaded", () => {
   function applyFilters() {
     const q = normalize(currentSearch.trim());
 
+    let termMatches = [];
+    let translationMatches = [];
+    let definitionMatches = [];
+
     filteredItems = glossary.filter((item) => {
       const categoryMatch =
         currentCategory === "all" || item.category === currentCategory;
-
-      if (!categoryMatch) return false;
-
-      if (!q) return true;
-
-      const term = normalize(item.term || "");
-      const translation = normalize(item.translation || "");
-      const definition = normalize(item.definition || "");
-
-      return (
-        term.includes(q) ||
-        translation.includes(q) ||
-        definition.includes(q)
-      );
+      return categoryMatch;
     });
 
-    currentPage = 1; 
-    renderList(paginate(filteredItems));
-    renderPagination(filteredItems.length);
+    if (q) {
+      filteredItems.forEach((item) => {
+        const term = normalize(item.term || "");
+        const translation = normalize(item.translation || "");
+        const definition = normalize(item.definition || "");
+
+        if (term.includes(q)) {
+          termMatches.push(item);
+        } else if (translation.includes(q)) {
+          translationMatches.push(item);
+        } else if (definition.includes(q)) {
+          definitionMatches.push(item);
+        }
+      });
+
+      filteredItems = [...termMatches, ...translationMatches, ...definitionMatches];
+    }
+
+    renderList(filteredItems);
   }
 
   function renderList(items) {
