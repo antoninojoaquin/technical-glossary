@@ -125,17 +125,12 @@ document.addEventListener("DOMContentLoaded", () => {
       rightTop.style.alignItems = "flex-end";
       rightTop.style.gap = "0.25rem";
 
-      const badge = document.createElement("span");
-      badge.className = "badge";
-      badge.textContent = "EN • IT";
-
       const categoryTag = document.createElement("span");
       categoryTag.className = "category-tag";
       categoryTag.textContent = item.category;
       categoryTag.style.backgroundImage = getCategoryColor(item.category);
 
       rightTop.appendChild(categoryTag);
-      rightTop.appendChild(badge);
 
       header.appendChild(termBlock);
       header.appendChild(rightTop);
@@ -147,7 +142,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const button = document.createElement("button");
       button.className = "speak-btn";
       button.type = "button";
-      button.innerHTML = `<span>🔊</span><span>Speak</span>`;
+      button.innerHTML = `<span>➤</span><span>Speak</span>`;
       button.addEventListener("click", () => {
         speakTerm(item.term);
       });
